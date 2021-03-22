@@ -13,8 +13,8 @@ struct BTNode
 }; 
 
 /**
-* @brief ¹¹½¨¶ş²æÊ÷£¬µİ¹é 
-* param[in] ¸ù½áµãµÄÒıÓÃ
+* @brief æ„å»ºäºŒå‰æ ‘ï¼Œé€’å½’ 
+* param[in] æ ¹ç»“ç‚¹çš„å¼•ç”¨
 */
 void build_btree(BTNode* &root)
 {
@@ -31,7 +31,7 @@ void build_btree(BTNode* &root)
 }
 
 /**
-* @brief ´òÓ¡ÔªËØÊı¾İ 
+* @brief æ‰“å°å…ƒç´ æ•°æ® 
 */ 
 void visit(const BTNode *e)
 {
@@ -39,11 +39,11 @@ void visit(const BTNode *e)
 }
 
 /**
-* @brief ÏÈĞò±éÀú£¬µİ¹é 
-* @param[in] root ¸ù½Úµã
-* @param[out] visit ·ÃÎÊÊı¾İµÄº¯ÊıÖ¸Õë
+* @brief å…ˆåºéå†ï¼Œé€’å½’ 
+* @param[in] root æ ¹ç»“ç‚¹
+* @param[out] visit è®¿é—®æ•°æ®çš„å‡½æ•°æŒ‡é’ˆ
 * 
-* @return ÎŞ 
+* @return æ—  
 */
 void pre_order_r(const BTNode *root, void (*visit)(const BTNode *))
 {
@@ -56,7 +56,7 @@ void pre_order_r(const BTNode *root, void (*visit)(const BTNode *))
 } 
 
 /**
-* @brief ÖĞĞò±éÀú£¬µİ¹é 
+* @brief ä¸­åºéå†ï¼Œé€’å½’ 
 */ 
 void in_order_r(const BTNode *root, void (*visit)(const BTNode *)) 
 {
@@ -68,7 +68,7 @@ void in_order_r(const BTNode *root, void (*visit)(const BTNode *))
 }
 
 /**
-* @brief ºóĞò±éÀú£¬µİ¹é 
+* @brief ååºéå†ï¼Œé€’å½’ 
 */
 void post_order_r(const BTNode *root, void (*visit)(const BTNode *))
 {
@@ -80,7 +80,7 @@ void post_order_r(const BTNode *root, void (*visit)(const BTNode *))
 }  
 
 /**
-* @brief ÏÈĞò±éÀú£¬·Çµİ¹é 
+* @brief å…ˆåºéå†ï¼Œéé€’å½’ï¼ŒDFS 
 */
 void pre_order(const BTNode *root, void (*visit)(const BTNode *))
 {
@@ -92,7 +92,7 @@ void pre_order(const BTNode *root, void (*visit)(const BTNode *))
 	{
 		p = s.top(); s.pop();
 		visit(p);
-		if(p->right != NULL) // ÏÈÓÒº¢×Ó½øÕ»£¬ÕâÑù×óº¢×Ó»áÏÈ³öÕ»ÒÔÂú×ãÏÈĞò±éÀú 
+		if(p->right != NULL) // å…ˆå³å­©å­è¿›æ ˆï¼Œè¿™æ ·å·¦å­©å­ä¼šå…ˆå‡ºæ ˆä»¥æ»¡è¶³å…ˆåºéå† 
 			s.push(p->right);
 		if(p->left != NULL)
 			s.push(p->left);
@@ -100,7 +100,7 @@ void pre_order(const BTNode *root, void (*visit)(const BTNode *))
 } 
 
 /**
-* @brief ÖĞĞò±éÀú£¬·Çµİ¹é 
+* @brief ä¸­åºéå†ï¼Œéé€’å½’ 
 */
 void in_order(const BTNode *root, void (*visit)(const BTNode *))
 {
@@ -124,7 +124,7 @@ void in_order(const BTNode *root, void (*visit)(const BTNode *))
 } 
 
 /**
-* @brief ºóĞò±éÀú£¬·Çµİ¹é 
+* @brief ååºéå†ï¼Œéé€’å½’ 
 */ 
 void post_order(const BTNode *root, void (*visit)(const BTNode *))
 {
@@ -132,7 +132,7 @@ void post_order(const BTNode *root, void (*visit)(const BTNode *))
 	std::stack<const BTNode *> s;
 	
 	do {
-		while(p != NULL) // ×ßµ½×î×óÏÂ 
+		while(p != NULL) // èµ°åˆ°æœ€å·¦ä¸‹ 
 		{
 			s.push(p);
 			p = p->left;
@@ -141,15 +141,15 @@ void post_order(const BTNode *root, void (*visit)(const BTNode *))
 		while(!s.empty())
 		{
 			p = s.top(); s.pop();
-			if(p->right == q) // ÓÒº¢×Ó²»´æÔÚ»òÒÑ±»·ÃÎÊ 
+			if(p->right == q) // å³å­©å­ä¸å­˜åœ¨æˆ–å·²è¢«è®¿é—® 
 			{
 				visit(p);
-				q = p; // ±£´æ¸Õ·ÃÎÊ¹ıµÄ½áµã 
+				q = p; // ä¿å­˜åˆšè®¿é—®è¿‡çš„ç»“ç‚¹ 
 			} 
 			else
 			{
-				s.push(p); // µ±Ç°½áµã²»ÄÜ·ÃÎÊ£¬ĞèÒªµÚ¶ş´Î½øÕ»
-				p = p->right; // ÏÈ´¦ÀíÓÒ×ÓÊ÷
+				s.push(p); // å½“å‰ç»“ç‚¹ä¸èƒ½è®¿é—®ï¼Œéœ€è¦ç¬¬äºŒæ¬¡è¿›æ ˆ
+				p = p->right; // å…ˆå¤„ç†å³å­æ ‘
 				break; 
 			} 
 		}
@@ -157,9 +157,9 @@ void post_order(const BTNode *root, void (*visit)(const BTNode *))
 } 
 
 /**
-* @brief ²ã´Î±éÀú£¬BFS
+* @brief å±‚æ¬¡éå†ï¼ŒBFS
 * 
-* ÓëÏÈĞò±éÀúÏàÍ¬£¬µ«ÊµÏÖÓÉÕ»»»³ÉÁË¶ÓÁĞ 
+* ä¸å…ˆåºéå†ç›¸åŒï¼Œä½†å®ç°ç”±æ ˆæ¢æˆäº†é˜Ÿåˆ— 
 */
 void level_order(const BTNode *root, void (*visit)(const BTNode *))
 {
@@ -172,7 +172,6 @@ void level_order(const BTNode *root, void (*visit)(const BTNode *))
 		p = q.front(); q.pop();
 		visit(p);
 		
-		// ´ËÊ±ÏÈ×ó»òºó×ó½Ô¿É 
 		if(p->left != NULL)
 			q.push(p->left);
 		if(p->right != NULL)
@@ -184,6 +183,7 @@ int main()
 {
 	BTNode *root;
 	build_btree(root);
+    
 	pre_order_r(root, visit);
 	in_order_r(root, visit);
 	post_order_r(root, visit); 
