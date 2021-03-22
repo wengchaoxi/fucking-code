@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 
 /**
-* @brief Á´¶Ó 
+* @brief é“¾é˜Ÿ 
 */
 template<class T>
 class Queue
@@ -21,7 +21,7 @@ public:
 		_head = _tail = NULL;
 		_size = 0;
 	}
-	void push(const T &e) // Èë¶Ó 
+	void push(const T &e) // å…¥é˜Ÿ 
 	{
 		Node *p = new Node;
 		if(p == NULL)
@@ -68,19 +68,19 @@ public:
 }; 
 
 /**
-* @brief ´òÓ¡Ñî»ÔÈı½ÇÏµÊı 
-* ·ÖĞĞ´òÓ¡¶şÏîÊ½ (a+b)^n µÄÕ¹¿ªÊ½µÄÏµÊı 
+* @brief æ‰“å°æ¨è¾‰ä¸‰è§’ç³»æ•° 
+* åˆ†è¡Œæ‰“å°äºŒé¡¹å¼ (a+b)^n çš„å±•å¼€å¼çš„ç³»æ•° 
 * 
 * @param[in] n (a+b)^n 
-* @return ÎŞ 
+* @return æ—  
 ***
 */
 void yanghui(const int n)
 {
 	Queue<int> q;
-	q.push(1); // ·ÅÈëµÚÒ»ĞĞµÄ 1 
+	q.push(1); // æ”¾å…¥ç¬¬ä¸€è¡Œçš„ 1 
 	
-	for(int i=0; i<=n; i++) // ĞĞ 
+	for(int i=0; i<=n; i++) // è¡Œ 
 	{
 		int s = 0;
 		q.push(s);
@@ -104,6 +104,6 @@ void yanghui(const int n)
 
 int main()
 {
-	yanghui(10);
+	yanghui(9);
 	return 0; 
 } 
