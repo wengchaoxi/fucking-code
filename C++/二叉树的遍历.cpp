@@ -4,6 +4,10 @@
 
 #define T char
 
+/**
+* @struct
+* @brief 二叉树结点
+*/
 struct BTNode
 {
 	T data;
